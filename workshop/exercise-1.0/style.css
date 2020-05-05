@@ -1,0 +1,13 @@
+body {
+  background-color: cadetblue;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  min-height: 100vh;
+}
+
+div#main {
+  color: #fff;
+  text-align: center;
+}

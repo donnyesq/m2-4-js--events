@@ -21,3 +21,30 @@
 // Stretch goal
 // Make the countdown live (show a countdown that updates several times a
 // second)
+
+let winning = true;
+let timeShown = document.querySelector("#time");
+let result = document.querySelector("#result");
+let timeLeft = Math.floor(Math.random() * (6 - 3) + 3);
+
+setTimeout(function () {
+  winning = false;
+}, timeLeft * 1000);
+
+window.addEventListener("click", function () {
+  winning
+    ? (result.innerText = "You win!")
+    : (result.innerText = "You lose...");
+});
+
+// TIMER
+
+timeShown.innerText = `${Math.round(timeLeft)}`;
+
+let intervalID = setInterval(function () {
+  timeLeft -= 1;
+  timeShown.innerText = `${Math.round(timeLeft)}`;
+  if (timeLeft < 1) {
+    clearInterval(intervalID);
+  }
+}, 1000);

@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      body {
+        background-color: gainsboro;
+      }
 
+      p {
+        font-family: "Lato", sans-serif;
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      span#time {
+        color: #cd5b45;
+      }
+
+      p.result {
+        color: #cd5b45;
+      }
     </style>
-</head>
-<body>
-    <p class="time-text">You have <span id="time"></span> seconds to click</p>
+  </head>
+  <body>
+    <p class="time-text">
+      You have <span id="time"></span> seconds to click anywhere on the screen.
+    </p>
     <p class="result" id="result"></p>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>

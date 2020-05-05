@@ -9,3 +9,11 @@
 // OPTIONAL
 // Feel free to add some CSS to this once you're done
 // --------------------------------------------------
+document.body.style.height = "100vh";
+document.body.addEventListener("click", function () {
+  console.log("in func");
+  let message = document.createElement("div");
+  message.innerText = "You clicked on the screen";
+  message.setAttribute("id", "message");
+  document.querySelector("#main").appendChild(message);
+});

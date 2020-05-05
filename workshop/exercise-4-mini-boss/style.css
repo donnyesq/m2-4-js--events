@@ -1,0 +1,47 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: goldenrod;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+h1.instructions {
+  font-family: "Lato", sans-serif;
+  padding-bottom: 20px;
+}
+
+button.start {
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  padding: 4px 20px;
+  border-radius: 4px;
+  outline: none;
+}
+
+button.start:hover {
+  cursor: pointer;
+}
+
+button.target {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #2e2e2e;
+  outline: none;
+  border: none;
+}
+
+button.target:hover {
+  cursor: pointer;
+}
