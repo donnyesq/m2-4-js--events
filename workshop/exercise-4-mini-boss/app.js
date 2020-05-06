@@ -10,36 +10,79 @@ startButton.classList.add("start");
 startButton.style.backgroundColor = "#2e2e2e";
 document.body.appendChild(startButton);
 
-const mainEvent = function (event) {
+const startGame = function (event) {
+  let timeLeft;
+  let countdown;
+
+  function runTimer() {
+    timeLeft = 10;
+    countdown = document.createElement("h1");
+    countdown.innerText = timeLeft;
+    countdown.style.zIndex = "999";
+    countdown.style.color = "#bbb";
+    document.body.appendChild(countdown);
+
+    let intervalID = setInterval(function () {
+      timeLeft--;
+      countdown.innerText = timeLeft;
+      if (timeLeft < 1) {
+        timeLeft = 0;
+        clearInterval(intervalID);
+        countdown.remove();
+      }
+    }, 1000);
+  }
+
+  runTimer();
   event.target.remove();
   instructions.style.display = "none";
 
-  for (i = 0; i < Math.floor(Math.random() * (20 - 10) + 10); i++) {
-    let button = document.createElement("button");
-    button.classList.add("target");
-    button.style.position = "absolute";
-    button.style.top = `${Math.random() * 400}px`;
-    button.style.left = `${Math.random() * 400}px`;
-    document.body.appendChild(button);
-  }
+  const createButtons = function () {
+    for (i = 0; i < Math.floor(Math.random() * (20 - 10) + 10); i++) {
+      let button = document.createElement("button");
+      button.classList.add("target");
+      button.style.position = "absolute";
+      button.style.top = `${Math.random() * 80}%`;
+      button.style.left = `${Math.random() * 80}%`;
+      document.body.appendChild(button);
+    }
+  };
 
+  createButtons();
+
+  //VARIABLES
   let totalButtons = document.querySelectorAll("button").length;
   let buttonsClicked = 0;
+  //VARIABLES
 
-  const nextEvent = function (event) {
+  const changeColor = function (event) {
     buttonsClicked++;
-    event.target.style.display = "none";
+    event.target.style.backgroundColor = "#ddd";
 
-    if (buttonsClicked === totalButtons) {
+    if (buttonsClicked === totalButtons && timeLeft > 0) {
+      countdown.remove();
       let win = document.createElement("h1");
-      win.innerText = "You win";
+      win.innerText = "Nicely done";
+      win.style.zIndex = "999";
       document.body.appendChild(win);
     }
   };
 
+  // if (buttonsClicked !== totalButtons && timeLeft <= 0) {
+  //   //REMOVE EVENT LISTENER
+  //   document.querySelectorAll("button").forEach(function (item) {
+  //     item.removeEventListener("click", changeColor);
+  //   });
+  //   // REMOVE EVENT LISTENER
+  //   let lose = document.createElement("h1");
+  //   lose.innerText = "Sorry, time's up";
+  //   lose.style.zIndex = "999";
+  //   document.body.appendChild(lose);
+  // }
+
   document.querySelectorAll("button").forEach(function (item) {
-    item.addEventListener("click", nextEvent);
+    item.addEventListener("click", changeColor);
   });
 };
 
-startButton.addEventListener("click", mainEvent);
+startButton.addEventListener("click", startGame);
