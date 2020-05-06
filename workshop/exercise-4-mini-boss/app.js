@@ -30,6 +30,19 @@ const startGame = function (event) {
         clearInterval(intervalID);
         countdown.remove();
       }
+      if (buttonsClicked !== totalButtons && timeLeft <= 0) {
+        console.log("in if statement");
+        //REMOVE EVENT LISTENER
+        document.querySelectorAll("button").forEach(function (item) {
+          console.log("in foreach");
+          item.removeEventListener("click", changeColor);
+        });
+        // REMOVE EVENT LISTENER
+        let lose = document.createElement("h1");
+        lose.innerText = "Sorry, time's up";
+        lose.style.zIndex = "999";
+        document.body.appendChild(lose);
+      }
     }, 1000);
   }
 
@@ -67,18 +80,6 @@ const startGame = function (event) {
       document.body.appendChild(win);
     }
   };
-
-  // if (buttonsClicked !== totalButtons && timeLeft <= 0) {
-  //   //REMOVE EVENT LISTENER
-  //   document.querySelectorAll("button").forEach(function (item) {
-  //     item.removeEventListener("click", changeColor);
-  //   });
-  //   // REMOVE EVENT LISTENER
-  //   let lose = document.createElement("h1");
-  //   lose.innerText = "Sorry, time's up";
-  //   lose.style.zIndex = "999";
-  //   document.body.appendChild(lose);
-  // }
 
   document.querySelectorAll("button").forEach(function (item) {
     item.addEventListener("click", changeColor);
