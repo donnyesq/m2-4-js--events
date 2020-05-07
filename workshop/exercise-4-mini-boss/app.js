@@ -31,10 +31,8 @@ const startGame = function (event) {
         countdown.remove();
       }
       if (buttonsClicked !== totalButtons && timeLeft <= 0) {
-        console.log("in if statement");
         //REMOVE EVENT LISTENER
         document.querySelectorAll("button").forEach(function (item) {
-          console.log("in foreach");
           item.removeEventListener("click", changeColor);
         });
         // REMOVE EVENT LISTENER
@@ -69,8 +67,11 @@ const startGame = function (event) {
   //VARIABLES
 
   const changeColor = function (event) {
-    buttonsClicked++;
-    event.target.style.backgroundColor = "#ddd";
+    console.log(event.target.style.backgroundColor);
+    if (event.target.style.backgroundColor === "rgb(46, 46, 46)") {
+      buttonsClicked++;
+      event.target.style.backgroundColor = "#ddd";
+    }
 
     if (buttonsClicked === totalButtons && timeLeft > 0) {
       countdown.remove();
@@ -82,6 +83,7 @@ const startGame = function (event) {
   };
 
   document.querySelectorAll("button").forEach(function (item) {
+    item.style.backgroundColor = "rgb(46, 46, 46)";
     item.addEventListener("click", changeColor);
   });
 };
