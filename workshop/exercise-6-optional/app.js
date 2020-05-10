@@ -18,7 +18,8 @@ let clicked = 0;
 let playXO = () => {
   clicked += 1;
 
-  if (clicked === 9 && !xHasWon && !oHasWon) {
+  if (xHasWon || oHasWon || (clicked === 9 && !xHasWon && !oHasWon)) {
+    console.log("in restart if statement");
     restartGame();
   }
 
@@ -184,20 +185,19 @@ const xWins = (cellX, cellY, cellZ) => {
   });
 
   cellX.style.backgroundColor = "#006885";
-  cellX.style.color = "#D3D8DC";
+  cellX.style.color = "#fff";
   cellX.style.border = "none";
   cellY.style.backgroundColor = "#006885";
-  cellY.style.color = "#D3D8DC";
+  cellY.style.color = "#fff";
   cellY.style.border = "none";
   cellZ.style.backgroundColor = "#006885";
-  cellZ.style.color = "#D3D8DC";
+  cellZ.style.color = "#fff";
   cellZ.style.border = "none";
 
   let winMessage = document.querySelector("h1");
   winMessage.innerText = "The Xs win";
 
   xHasWon = true;
-  restartGame();
 };
 
 const oWins = (cellX, cellY, cellZ) => {
@@ -207,20 +207,19 @@ const oWins = (cellX, cellY, cellZ) => {
   });
 
   cellX.style.backgroundColor = "#006885";
-  cellX.style.color = "#D3D8DC";
+  cellX.style.color = "#fff";
   cellX.style.border = "none";
   cellY.style.backgroundColor = "#006885";
-  cellY.style.color = "#D3D8DC";
+  cellY.style.color = "#fff";
   cellY.style.border = "none";
   cellZ.style.backgroundColor = "#006885";
-  cellZ.style.color = "#D3D8DC";
+  cellZ.style.color = "#fff";
   cellZ.style.border = "none";
 
   let winMessage = document.querySelector("h1");
   winMessage.innerText = "The Os win";
 
   oHasWon = true;
-  restartGame();
 };
 
 const restartGame = () => {
